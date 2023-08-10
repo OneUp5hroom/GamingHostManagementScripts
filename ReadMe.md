@@ -47,3 +47,4 @@ sudo systemctl enable 7d2d-Monitor.service
 journalctl -u 7d2d.service -b -f
 journalctl -u 7d2d-Monitor.service -b -f
 tail -f ~/7days/7DaysToDieServer_Data/output_log__2023-08-07__04-08-27.txt
+scp -i ...key.pem "local.tar" azureuser@x.xxx.xxx.xxx:/home/azureuser/7days/Data/Worlds
