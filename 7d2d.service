@@ -1,0 +1,12 @@
+[Unit]
+Description=7Days2DieServer
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+ExecStart=/bin/bash /home/azureuser/7days/scripts/Auto-Start-Server.sh
+Type=simple
+User=azureuser
+WorkingDirectory=/home/azureuser/7days
+Restart=no

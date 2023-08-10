@@ -1,0 +1,12 @@
+[Unit]
+Description=7Days2DieServerMonitor
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+ExecStart=/bin/bash /home/azureuser/7days/scripts/Auto-Monitor-Server.sh
+Type=simple
+User=azureuser
+WorkingDirectory=/home/azureuser/7days
+Restart=no
