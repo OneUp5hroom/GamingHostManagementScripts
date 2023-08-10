@@ -31,12 +31,14 @@ Auto-Start-Server.sh
 Auto-Backup.sh
 Auto-Monitor-Server.sh
 
-# Environment Var Setup | actually these dont work :(
-export = STORAGE_ACCOUNT_NAME="Your Blob Storage Account Name"
-export = GAME_SAVE_CONTAINER="Your Blob Storage Container Name for Game Saves"
-export = GAME_WORLD_CONTAINER="Your Blob Storage Container Name for World Saves"
+# Environment Var Setup (In backups script)
+STORAGE_ACCOUNT_NAME="Your Blob Storage Account Name"
+GAME_SAVE_CONTAINER="Your Blob Storage Container Name for Game Saves"
+GAME_WORLD_CONTAINER="Your Blob Storage Container Name for World Saves"
 
-#startup
+#Service Settings
+Place service files here:
+/etc/systemd/system
 
 sudo systemctl enable 7d2d.service
 sudo systemctl enable 7d2d-Monitor.service
