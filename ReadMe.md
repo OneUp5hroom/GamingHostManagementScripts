@@ -25,6 +25,8 @@ sudo apt-get install xmlstarlet
 # AzCopy for Backups to Azure Blob Storage
 sudo bash -c 'cd /usr/local/bin; curl -L https://aka.ms/downloadazcopy-v10-linux | tar --strip-components=1 --exclude=*.txt -xzvf -; chmod +x azcopy'
 
+#Az CLI
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 
 Server Scripts:
 Auto-Start-Server.sh
