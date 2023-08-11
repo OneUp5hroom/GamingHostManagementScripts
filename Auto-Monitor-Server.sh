@@ -31,7 +31,7 @@ echo ""
 
 if [[ $playerCheckCount -ge $noPlayersCheckLimit ]] && [ $needsBackup == 1 ]; then
     echo "Shutting Down Server"
-    echo $( {echo "shutdown"; sleep 2;} | telnet localhost 8081)
+    echo $( {echo "shutdown"; sleep 2; } | telnet localhost 8081)
     sleep 120
     echo "Starting Backup"
     $(bash /home/azureuser/7days/scripts/Auto-Backup-Server.sh)
