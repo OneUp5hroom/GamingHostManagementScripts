@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 #Blob Storage Coinfiguration
 STORAGE_ACCOUNT_NAME=""
@@ -15,8 +15,9 @@ worldName=$(xmlstarlet sel -T -t -m '//property[@name="GameWorld"]/@value' -v . 
 az login --identity
 blobs=$(az storage blob list --account-name ${STORAGE_ACCOUNT_NAME} --container-name ${GAME_WORLD_CONTAINER} --auth-mode login --query "[].name")
 
-worldSaveName="${worldName}.tar.gz" 
-if [[ ! " ${blobs[*]} " =~ "$worldSaveName" ]]; then
+worldSaveName="${worldName}.tar.gz"
+
+if [[ ! " ${blobs[*]} " =~ " ${worldSaveName} " ]]; then
     tar --force-local -zcvf $worldSaveName /home/azureuser/7days/Data/Worlds/${worldName}
     azcopy copy ./${worldSaveName} "https://${STORAGE_ACCOUNT_NAME}.blob.core.windows.net/${GAME_WORLD_CONTAINER}/${worldSaveName}"
     rm ./${worldSaveName}
