@@ -1,0 +1,12 @@
+[Unit]
+Description=minecraftmonitorserver
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+ExecStart=/bin/bash /home/azureuser/minecraft/scripts/auto-monitor-server.sh
+Type=simple
+User=azureuser
+WorkingDirectory=/home/azureuser/minecraft
+Restart=no

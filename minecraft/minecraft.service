@@ -1,0 +1,12 @@
+[Unit]
+Description=MinecraftServer
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+ExecStart=/bin/bash /home/azureuser/minecraft/scripts/auto-start-server.sh
+Type=simple
+User=azureuser
+WorkingDirectory=/home/azureuser/7days
+Restart=no
