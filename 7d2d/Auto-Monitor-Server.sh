@@ -13,11 +13,11 @@ do
     if [ "$checkUsers" == "Total of 0 in the game" ]; then 
         let "playerCheckCount+=1"
         echo "Increase PlayerCheckCount to: ${playerCheckCount}"
-        # at least one person played so we will backup
-        let "needsBackup=1"
     else
         echo "Reset PlayerCheckCount"
         let "playerCheckCount=0"
+        # at least one person played so we will backup
+        let "needsBackup=1"
     fi
     $(sleep 60);
 done
@@ -29,14 +29,16 @@ echo "noPlayersCheckLimit: ${noPlayersCheckLimit}"
 echo "needsBackup: ${needsBackup}"
 echo ""
 
+echo "Shutting Down Server"
+echo $( { echo "shutdown"; sleep 2; } | telnet localhost 8081)
+sleep 120
+
 if [[ $playerCheckCount -ge $noPlayersCheckLimit ]] && [ $needsBackup == 1 ]; then
-    echo "Shutting Down Server"
-    echo $( { echo "shutdown"; sleep 2; } | telnet localhost 8081)
-    sleep 120
+
     echo "Starting Backup"
     $(bash /home/azureuser/7days/scripts/Auto-Backup-Server.sh)
     echo "Backup Complete"
-    echo "Deallocating Server"
-    az login --identity
-    az vm deallocate --name $(hostname) --resource-group 7d2d
 fi
+echo "Deallocating Server"
+az login --identity
+az vm deallocate --name $(hostname) --resource-group 7d2d

@@ -80,9 +80,22 @@ wget https://maven.minecraftforge.net/net/minecraftforge/forge/1.20.1-47.1.3/for
 java -jar forge-1.20.1-47.1.3-installer.jar --installServer
 
 ## Install RCON (Minecrafts Telnet for scripts)
-sudo apt -y install rcon
+https://github.com/tiiffi/mcrcon
+Set up ENV:
+    MCRCON_HOST=127.0.0.1
+    MCRCON_PORT=55565
+    MCRCON_PASS=
+
+    created in ./scripts/env/env_file and referenced in service
+
+## Enable Service
+sudo systemctl enable minecraft.service
+sudo systemctl enable minecraft-monitor.service
 
 ## copy mods to server
 scp -i ...key.pem "local.tar" azureuser@x.xxx.xxx.xxx:/home/azureuser/minecraft/mods/servermods.tar
 
 tar -xvf ./servermods.tar
+
+journalctl -u minecraft.service -b -f
+journalctl -u minecraft-monitor.service -b -f

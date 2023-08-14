@@ -8,5 +8,5 @@ WantedBy=multi-user.target
 ExecStart=/bin/bash /home/azureuser/minecraft/scripts/auto-start-server.sh
 Type=simple
 User=azureuser
-WorkingDirectory=/home/azureuser/7days
+WorkingDirectory=/home/azureuser/minecraft
 Restart=no

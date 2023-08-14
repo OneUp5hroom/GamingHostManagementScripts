@@ -9,4 +9,5 @@ ExecStart=/bin/bash /home/azureuser/minecraft/scripts/auto-monitor-server.sh
 Type=simple
 User=azureuser
 WorkingDirectory=/home/azureuser/minecraft
+EnvironmentFile=/home/azureuser/minecraft/scripts/env/env_file
 Restart=no

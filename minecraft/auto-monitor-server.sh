@@ -4,20 +4,21 @@ let "needsBackup=0"
 let "noPlayersCheckLimit=5"
 let "playerCheckCount=0"
 
+
 sleep 300
 
 while [ $playerCheckCount -lt $noPlayersCheckLimit ]
 do
-    checkUsers=$( { echo "lp" && sleep 2 && echo "exit"; } | telnet localhost 8081 | grep -P "Total of \d in the game" )
+    checkUsers=$( mcrcon "list" -r | tr -d ': \n' )
     echo "checkUsers: ${checkUsers}"
-    if [ "$checkUsers" == "Total of 0 in the game" ]; then 
+    if [ "$checkUsers" == "Thereare0ofamaxof20playersonline" ]; then 
         let "playerCheckCount+=1"
         echo "Increase PlayerCheckCount to: ${playerCheckCount}"
-        # at least one person played so we will backup
-        let "needsBackup=1"
     else
         echo "Reset PlayerCheckCount"
         let "playerCheckCount=0"
+        # at least one person played so we will backup
+        let "needsBackup=1"
     fi
     $(sleep 60);
 done
@@ -29,10 +30,11 @@ echo "noPlayersCheckLimit: ${noPlayersCheckLimit}"
 echo "needsBackup: ${needsBackup}"
 echo ""
 
-if [[ $playerCheckCount -ge $noPlayersCheckLimit ]] && [ $needsBackup == 1 ]; then
-    echo "Shutting Down Server"
-    echo $( { echo "shutdown"; sleep 2; } | telnet localhost 8081)
-    sleep 120
+echo "Shutting Down Server"
+echo $( mcrcon -w 5 "say Server is Shutting Down!" save-all stop )
+sleep 30
+
+if [ $needsBackup == 1 ]; then
     echo "Starting Backup"
     $(bash /home/azureuser/minecraft/scripts/auto-backup-server.sh)
     echo "Backup Complete"
