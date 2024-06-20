@@ -1,32 +1,41 @@
 Server Requirements:
 # Required to run steamCMD
+```
 sudo apt install -y vim screen wget lib32gcc-s1
+```
+
+# Required to Run 7d2d (C++ redist)
+```
+sudo apt update
+sudo apt install build-essential
+```
 
 # install steamCMD
-wget https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz
+`wget https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz`
 
-tar -xvf steamcmd_linux.tar.gz
+`tar -xvf steamcmd_linux.tar.gz`
 
-./steamcmd.sh
-    force_install_dir ./7days
-    login anonymous
-    app_update 294420
-    quit
+`./steamcmd.sh`
+
+`force_install_dir ./7days`
+`login anonymous`
+`app_update 294420`
+`quit`
 
 # Open Firewall
-sudo ufw allow 26900:26905/tcp && sudo ufw allow 26900:26905/udp
+`sudo ufw allow 26900:26905/tcp && sudo ufw allow 26900:26905/udp`
 
 # 7d2d Config
 It is important to enable telnet (only from local host by not setting a password).
 
 # xmlstarlet for parsing xml in bash
-sudo apt-get install xmlstarlet
+`sudo apt-get install xmlstarlet`
 
 # AzCopy for Backups to Azure Blob Storage
-sudo bash -c 'cd /usr/local/bin; curl -L https://aka.ms/downloadazcopy-v10-linux | tar --strip-components=1 --exclude=*.txt -xzvf -; chmod +x azcopy'
+`sudo bash -c 'cd /usr/local/bin; curl -L https://aka.ms/downloadazcopy-v10-linux | tar --strip-components=1 --exclude=*.txt -xzvf -; chmod +x azcopy'`
 
 #Az CLI
-curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+`curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash`
 
 Server Scripts:
 Auto-Start-Server.sh
@@ -42,18 +51,18 @@ GAME_WORLD_CONTAINER="Your Blob Storage Container Name for World Saves"
 Place service files here:
 /etc/systemd/system
 
-sudo systemctl enable 7d2d.service
+`sudo systemctl enable 7d2d.service`
 
-sudo systemctl enable 7d2d-Monitor.service
+`sudo systemctl enable 7d2d-Monitor.service`
 
 # helpful commands
-journalctl -u 7d2d.service -b -f
+`journalctl -u 7d2d.service -b -f`
 
-journalctl -u 7d2d-Monitor.service -b -f
+`journalctl -u 7d2d-Monitor.service -b -f`
 
-tail -f ~/7days/7DaysToDieServer_Data/output_log__2023-08-07__04-08-27.txt
+`tail -f ~/7days/7DaysToDieServer_Data/` output_log__2023-08-07__04-08-27.txt
 
-scp -i ...key.pem "local.tar" azureuser@x.xxx.xxx.xxx:/home/azureuser/7days/Data/Worlds
+`scp -i ...key.pem "local.tar" azureuser@x.xxx.xxx.xxx:/home/azureuser/7days/Data/Worlds`
 
 
 # Minecraft
