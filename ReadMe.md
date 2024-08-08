@@ -15,7 +15,7 @@ sudo apt install build-essential
 
 `tar -xvf steamcmd_linux.tar.gz`
 
-`Chmod +x steamcmd.sh`
+`chmod +x steamcmd.sh`
 
 `./steamcmd.sh`
 
