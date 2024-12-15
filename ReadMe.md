@@ -65,7 +65,7 @@ Place service files here:
 `tail -f ~/7days/7DaysToDieServer_Data/` output_log__2023-08-07__04-08-27.txt
 
 To create the tar file
-`tar -cvzf filename.tgz mydir`
+`tar -cvzf filename.tar .`
 
 To transfer to the server
 `scp -i ...key.pem "local.tar" azureuser@x.xxx.xxx.xxx:/home/azureuser/7days/Data/Worlds`
