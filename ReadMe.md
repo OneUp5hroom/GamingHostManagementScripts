@@ -75,24 +75,23 @@ To transfer to the server
 sudo apt update
 
 ## Install Java
-sudo add-apt-repository ppa:openjdk-r/ppa
-sudo apt update
-sudo apt install openjdk-17-jre-headless (NO GUI, SMALLER)
+- sudo add-apt-repository ppa:openjdk-r/ppa
+- sudo apt update
+- sudo apt install openjdk-17-jre-headless (NO GUI, SMALLER)
 
 ## Version Check
-java -version
+- java -version
 
 ## Install Minecraft (For non-Modded)
-wget https://piston-data.mojang.com/v1/objects/84194a2f286ef7c14ed7ce0090dba59902951553/server.jar
-java -Xms1024M -Xmx7517M -jar server.jar nogui
-accept eula
-java -Xms1024M -Xmx7517M -jar server.jar nogui
+- wget https://piston-data.mojang.com/v1/objects/84194a2f286ef7c14ed7ce0090dba59902951553/server.jar
+- java -Xms1024M -Xmx7517M -jar server.jar nogui
+- accept eula
+- java -Xms1024M -Xmx7517M -jar server.jar nogui
 
 
-## Install Forge (For Modded)
-wget https://maven.minecraftforge.net/net/minecraftforge/forge/1.20.1-47.1.3/forge-1.20.1-47.1.3-installer.jar
-
-java -jar forge-1.20.1-47.1.3-installer.jar --installServer
+## Install neoForge (For Modded)
+- wget https://maven.neoforged.net/releases/net/neoforged/neoforge/21.1.137/neoforge-21.1.137-installer.jar
+- java -jar forge-1.20.1-47.1.3-installer.jar --installServer
 
 ## Install RCON (Minecrafts Telnet for scripts)
 Set up GCC:
@@ -101,6 +100,8 @@ Set up GCC:
 - git clone https://github.com/Tiiffi/mcrcon.git ~/tools/mcrcon
 - cd ~/tools/mcrcon
 - gcc -std=gnu11 -pedantic -Wall -Wextra -O2 -s -o mcrcon mcrcon.c
+
+## Version Check
 - ./mcrcon -v
 
 Set up ENV:
