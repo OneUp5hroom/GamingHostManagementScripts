@@ -124,4 +124,5 @@ scp -i ...key.pem "local.tar" azureuser@x.xxx.xxx.xxx:/home/azureuser/minecraft/
 tar -xvf ./servermods.tar
 
 journalctl -u minecraft.service -b -f
+
 journalctl -u minecraft-monitor.service -b -f
