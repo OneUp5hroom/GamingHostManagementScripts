@@ -95,11 +95,18 @@ wget https://maven.minecraftforge.net/net/minecraftforge/forge/1.20.1-47.1.3/for
 java -jar forge-1.20.1-47.1.3-installer.jar --installServer
 
 ## Install RCON (Minecrafts Telnet for scripts)
-https://github.com/tiiffi/mcrcon
+Set up GCC:
+- sudo apt update
+- sudo apt install git build-essential
+- git clone https://github.com/Tiiffi/mcrcon.git ~/tools/mcrcon
+- cd ~/tools/mcrcon
+- gcc -std=gnu11 -pedantic -Wall -Wextra -O2 -s -o mcrcon mcrcon.c
+- ./mcrcon -v
+
 Set up ENV:
-    MCRCON_HOST=127.0.0.1
-    MCRCON_PORT=55565
-    MCRCON_PASS=
+- MCRCON_HOST=127.0.0.1
+- MCRCON_PORT=55565
+- MCRCON_PASS=
 
     created in ./scripts/env/env_file and referenced in service
 
