@@ -77,7 +77,7 @@ sudo apt update
 ## Install Java
 - sudo add-apt-repository ppa:openjdk-r/ppa
 - sudo apt update
-- sudo apt install openjdk-17-jre-headless (NO GUI, SMALLER)
+- sudo apt install openjdk-21-jre-headless (NO GUI, SMALLER)
 
 ## Version Check
 - java -version
