@@ -115,6 +115,9 @@ Set up ENV:
 sudo systemctl enable minecraft.service
 sudo systemctl enable minecraft-monitor.service
 
+# Open Firewall
+`sudo ufw allow 25565:26905/tcp && sudo ufw allow 25565:26905/udp`
+
 ## copy mods to server
 scp -i ...key.pem "local.tar" azureuser@x.xxx.xxx.xxx:/home/azureuser/minecraft/mods/servermods.tar
 
