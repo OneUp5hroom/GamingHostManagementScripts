@@ -33,6 +33,9 @@ It is important to enable telnet (only from local host by not setting a password
 # xmlstarlet for parsing xml in bash
 `sudo apt-get install xmlstarlet`
 
+# ncat for network commands 
+`sudo apt install ncat`
+
 # AzCopy for Backups to Azure Blob Storage
 `sudo bash -c 'cd /usr/local/bin; curl -L https://aka.ms/downloadazcopy-v10-linux | tar --strip-components=1 --exclude=*.txt -xzvf -; chmod +x azcopy'`
 
